@@ -142,15 +142,15 @@
     });
     let dirxml = errorBtns[7];
     dirxml.addEventListener('click', dx => {
-      concole.dirxml(dirxml);
+      console.dirxml(dirxml);
     });
     let strt = errorBtns[8];
     strt.addEventListener('click', st => {
-      console.group();
+      console.group(timeline1);
     });
     let end = errorBtns[9];
     end.addEventListener('click', en => {
-      console.groupEnd();      
+      console.groupEnd(timeline1);      
     });
     let tbl = errorBtns[10];
     tbl.addEventListener('click', tb => {
