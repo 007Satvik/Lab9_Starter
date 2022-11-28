@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "b324169bdb984d0d96cad1669e527324"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
+                  
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -88,6 +95,7 @@
   </main>
 
   <script>
+    try{
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -97,9 +105,85 @@
       let operator = document.querySelector('#operator').value;
       output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
     });
+    } catch (err){ console.error(err);}
+    finally {
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
-
+    
+    let log = errorBtns[0];
+    log.addEventListener('click', l => {
+      console.log('Demo');
+    });
+    let error = errorBtns[1];
+    error.addEventListener('click', err => {
+      console.error('Demo error');
+    });
+    let cnt = errorBtns[2];
+    cnt.addEventListener('click', cn => {
+      console.count();
+    })
+    let warn = errorBtns[3];
+    warn.addEventListener('click', w => {
+      console.warn('demo warning');
+    });
+    let assert = errorBtns[4];
+    assert.addEventListener('click', ass => {
+      let demoNum = 2;
+      let reson = 'demo assertion'
+      console.assert({demoNum, reason});
+    });
+    let clear = errorBtns[5];
+    clear.addEventListener('click', cl => {
+      console.clear();
+    });
+    let dir = errorBtns[6];
+    dir.addEventListener('click', d => {
+      console.dir(dir);
+    });
+    let dirxml = errorBtns[7];
+    dirxml.addEventListener('click', dx => {
+      concole.dirxml(dirxml);
+    });
+    let strt = errorBtns[8];
+    strt.addEventListener('click', st => {
+      console.group();
+    });
+    let end = errorBtns[9];
+    end.addEventListener('click', en => {
+      console.groupEnd();      
+    });
+    let tbl = errorBtns[10];
+    tbl.addEventListener('click', tb => {
+      console.table(['apple', 'apples', 'applebees']);
+    });
+    let time = errorBtns[11];
+    time.addEventListener('click', tm => {
+      console.time();
+    });
+    let tmend = errorBtns[12];
+    tmend.addEventListener('click', ten => {
+      console.timeEnd();
+    });
+    let trc = errorBtns[13];
+    trc.addEventListener('click', trace => {
+      const deep = () => { deeper(); };
+      const deeper = () => {deepest(); };
+      const deepest = () => {console.trace(handleBtnClick())};
+      deep();
+      function handleBtnClick();
+    });
+    let global = errorBtns[14];
+    global.addEventListener('click', g => {
+      throw new newerror('something went wrong');
+    });
+    
+    class newerror extends Error {
+      constructor(message) {
+        super(message);
+        this.name = 'New and custom Error';
+      }
+    }
+    }
     // Start your code here
     // You may move this JS to another file if you wish
   </script>
